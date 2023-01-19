@@ -9,5 +9,9 @@ namespace michael_blackmer_pantry_collab_1.Models
 
         public List<UserAccount> UserAccounts { get; set; }
 
+        public Pantry Pantry { get; set; }
+
+        public List<Recipe> Recipes { get; set; }
+
     }
 }

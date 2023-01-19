@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <Folder Include="DTOs\" />
+    <Folder Include="Services\ItemServices\" />
+    <Folder Include="Services\PantryServices\" />
+    <Folder Include="Services\RecipeServices\" />
   </ItemGroup>
 
 </Project>

@@ -25,6 +25,38 @@ namespace michael_blackmer_pantry_collab_1.Controllers
         {
             return await _userAccountService.GetAllUserAccounts(familyId);
         }
+
+
+        [HttpGet("{userName}")]
+        public async Task<ActionResult<UserAccount>> GetUserByUsername(string userName)
+        {
+            try
+            {
+                var result = await _userAccountService.GetUserByUsername(userName);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return NotFound("Account not found.");
+            }
+        }
+
+        [HttpGet("{userName}/{password}")]
+        public async Task<ActionResult<UserAccount>> GetUserbyUsernameAndPassword(string userName, string password)
+        {
+            try
+            {
+                var result = await _userAccountService.GetUserByUsernameAndPassword(userName, password);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return NotFound("Username/Password Incorrect");
+            }
+
+
+        }
     }
 }
 
