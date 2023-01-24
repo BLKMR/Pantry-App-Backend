@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -18,10 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Services\ItemServices\" />
-    <Folder Include="Services\PantryServices\" />
-    <Folder Include="Services\RecipeServices\" />
+    <Folder Include="Services\ItemService\" />
+    <Folder Include="Services\PantryService\" />
+    <Folder Include="Services\RecipeService\" />
   </ItemGroup>
 
 </Project>
