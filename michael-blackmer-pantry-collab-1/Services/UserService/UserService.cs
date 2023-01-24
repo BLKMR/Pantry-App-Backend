@@ -34,7 +34,7 @@ namespace michael_blackmer_pantry_collab_1.Services.UserService
             return account;
         }
 
-        public async Task<User?> GetUserByUsernameAndPassword(string username, string password)
+        public async Task<User> GetUserByUsernameAndPassword(string username, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Name == username && u.Password == password);
             if (user != null)
@@ -42,7 +42,7 @@ namespace michael_blackmer_pantry_collab_1.Services.UserService
                 return user;
             }
 
-            throw new Exception("Username taken");
+            throw new Exception("Email/Password incorrect");
         }
 
 

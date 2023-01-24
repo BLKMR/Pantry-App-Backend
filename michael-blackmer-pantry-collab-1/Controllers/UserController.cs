@@ -3,6 +3,7 @@ using michael_blackmer_pantry_collab_1.Services.UserService;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace michael_blackmer_pantry_collab_1.Controllers
 {
@@ -26,9 +27,13 @@ namespace michael_blackmer_pantry_collab_1.Controllers
             return await _userService.GetAllUsers();
         }
 
+        [HttpGet("{username}/{password}")]
+        public async Task<ActionResult<User>> GetUserByUsernameAndPassword(string username, string password)
+        {
+            return await _userService.GetUserByUsernameAndPassword(username, password);
+        }
+
         
-
-
 
         [HttpPost]
         public async Task<ActionResult> AddUser(User user)

@@ -27,7 +27,7 @@ namespace michael_blackmer_pantry_collab_1.Services.FamilyService
         public async Task CreateFamily(Family family)
         {
             var familyExists = await _context.Families.FirstOrDefaultAsync(f => f.Name == family.Name);
-            if (familyExists == null) 
+            if (familyExists is null) 
             {
                 var newFamily = new Family
                 {
