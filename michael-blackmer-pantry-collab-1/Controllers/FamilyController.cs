@@ -27,6 +27,13 @@ namespace michael_blackmer_pantry_collab_1.Controllers
             return await _familyService.GetAllFamilies();
         }
 
+        [HttpGet("familyName")]
+        public async Task<Family?> GetFamilyByName(string familyName)
+        {
+            return await _familyService.GetFamilyByName(familyName);
+           
+        }
+
 
 
 

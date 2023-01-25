@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace michael_blackmer_pantry_collab_1.Models
 {
@@ -11,8 +12,10 @@ namespace michael_blackmer_pantry_collab_1.Models
         public string FamilyName { get; set; } = string.Empty;
 
         [ForeignKey("Family")]
-        public int FamilyId { get; set; } 
-        public Family? Family { get; set; }
+        public int FamilyId { get; set; }
+        
+        public Family Family { get; set; } = null!;
+
 
     }
 }

@@ -1,6 +1,7 @@
 using michael_blackmer_pantry_collab_1;
 using michael_blackmer_pantry_collab_1.Models;
 using michael_blackmer_pantry_collab_1.Services.FamilyService;
+using michael_blackmer_pantry_collab_1.Services.ItemService;
 using michael_blackmer_pantry_collab_1.Services.UserService;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFamilyService, FamilyService>();
+builder.Services.AddScoped<IItemService, ItemService>();
 
 
 

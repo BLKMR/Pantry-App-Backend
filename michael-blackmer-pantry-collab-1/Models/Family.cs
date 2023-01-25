@@ -13,7 +13,7 @@ namespace michael_blackmer_pantry_collab_1.Models
 
         public List<User> Users { get; set; } = new List<User>();
 
-        public List<Recipe> Recipes { get; set; }  = new List<Recipe>();
+
 
     }
 

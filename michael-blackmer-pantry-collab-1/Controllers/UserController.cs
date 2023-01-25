@@ -33,14 +33,21 @@ namespace michael_blackmer_pantry_collab_1.Controllers
             return await _userService.GetUserByUsernameAndPassword(username, password);
         }
 
-        
+
 
         [HttpPost]
         public async Task<ActionResult> AddUser(User user)
         {
+            try
+            {
                 await _userService.AddUser(user);
-                return Ok(user);
+                return Ok();
             }
+            catch (Exception)
+            {
+                return Conflict();
+            }
+        }
 
     }
 }

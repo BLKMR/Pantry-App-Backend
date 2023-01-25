@@ -1,4 +1,5 @@
 ﻿using michael_blackmer_pantry_collab_1.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System.Security.Principal;
@@ -21,6 +22,13 @@ namespace michael_blackmer_pantry_collab_1.Services.FamilyService
             return family;
         }
 
+        public async Task<Family?> GetFamilyByName(string familyName)
+        {
+            var family = await _context.Families.FirstOrDefaultAsync(f => f.Name == familyName);
+            return family;
+            
+        }
+
 
         //Create a Family
 
@@ -34,8 +42,6 @@ namespace michael_blackmer_pantry_collab_1.Services.FamilyService
                     Id = family.Id,
                     Name = family.Name,
                     Pantry = family.Pantry,
-                    Users = family.Users,
-                    Recipes = family.Recipes,
 
                 };
                 _context.Families.Add(newFamily);

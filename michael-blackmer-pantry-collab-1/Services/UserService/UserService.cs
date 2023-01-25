@@ -1,4 +1,5 @@
 ﻿using michael_blackmer_pantry_collab_1.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -49,35 +50,32 @@ namespace michael_blackmer_pantry_collab_1.Services.UserService
         //Create a Family
         public async Task AddUser(User user)
         {
-
-            var userExists = await _context.Users.FirstOrDefaultAsync(u => u.Name == user.Name);
-
-            if (userExists is null) 
-            {
-                var linkedFamily = await _context.Families
-                .Where(f => f.Name == user.FamilyName)
-                .Include(f => f.Users)
-                .FirstOrDefaultAsync();
-
-                var newUser = new User
+                var emailExists = await _context.Users.FirstOrDefaultAsync(u => u.Name == user.Name);
+                if (emailExists is null)
                 {
-                    Name = user.Name,
-                    Id = user.Id,
-                    Password = user.Password,
-                    FamilyName = user.FamilyName,
-                    FamilyId = linkedFamily.Id,
-                };
 
-                _context.Users.Add(newUser);
-                await _context.SaveChangesAsync();
-                return;
+                /* I really wanted this code to work for my entity relationships but it refused due to the family context always returning nullable and not allowing me to apply a familyId to the created user :(
+               var family = await _context.Families.FirstOrDefaultAsync(f => f.Name == user.FamilyName);
+                   if (family != null) 
+                   {
+                       user.FamilyId = family.Id;
+                       _context.Users.Add(user);
+                       await _context.SaveChangesAsync();
+                       return;
+                   }
+                 */
+                _context.Users.Add(user);
+                    await _context.SaveChangesAsync();
+                    return;
+                }
+
+                throw new Exception($"{user.Name} is not registered");
+                }
+         
 
             }
 
-            throw new Exception("Account name used");                     
-
         }
-    }
-}
+
 
 
