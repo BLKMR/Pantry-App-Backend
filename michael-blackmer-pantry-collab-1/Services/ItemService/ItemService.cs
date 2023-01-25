@@ -37,8 +37,7 @@ namespace michael_blackmer_pantry_collab_1.Services.ItemService
                     Calories = item.Calories,
                     Weight= item.Weight,
                     Quantity= item.Quantity,
-                    PantryName = item.PantryName,
-                    FamilyId = item.Id,
+                    FamilyName = item.FamilyName,
                 };
 
                 _context.Items.Add(newItem);

@@ -11,12 +11,7 @@ namespace michael_blackmer_pantry_collab_1.Models
         public int Calories { get; set; }
         public double Weight { get; set; }
         public int Quantity { get; set; }   
-        public string PantryName { get; set; } = string.Empty;
-
-        [ForeignKey("Family")]
-        public int FamilyId { get; set; }
-        public Family Family { get; set; }
-
+        public string FamilyName { get; set; } = string.Empty;
 
     }
 }

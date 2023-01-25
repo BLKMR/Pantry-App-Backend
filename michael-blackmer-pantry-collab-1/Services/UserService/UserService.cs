@@ -55,7 +55,7 @@ namespace michael_blackmer_pantry_collab_1.Services.UserService
                 {
 
                 /* I really wanted this code to work for my entity relationships but it refused due to the family context always returning nullable and not allowing me to apply a familyId to the created user :(
-               var family = await _context.Families.FirstOrDefaultAsync(f => f.Name == user.FamilyName);
+                var family = await _context.Families.FirstOrDefaultAsync(f => f.Name == user.FamilyName);
                    if (family != null) 
                    {
                        user.FamilyId = family.Id;
@@ -64,12 +64,19 @@ namespace michael_blackmer_pantry_collab_1.Services.UserService
                        return;
                    }
                  */
-                _context.Users.Add(user);
+                var newUser = new User
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Password = user.Password,
+                    FamilyName = user.FamilyName,
+                };
+                _context.Users.Add(newUser);
                     await _context.SaveChangesAsync();
                     return;
                 }
 
-                throw new Exception($"{user.Name} is not registered");
+                throw new Exception();
                 }
          
 
